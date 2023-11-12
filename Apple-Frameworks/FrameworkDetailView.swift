@@ -9,12 +9,16 @@ import SwiftUI
 
 struct FrameworkDetailView: View {
     var framework: Framework
+    @Binding var isShowingDetailView: Bool
+
     var body: some View {
         VStack{
             
             HStack {
                 Spacer()
                 Button{
+                    /// Dismiss the bottom sheet
+                    isShowingDetailView = false
                     
                 }label: {
                     Image(systemName: "xmark")
@@ -49,7 +53,7 @@ struct FrameworkDetailView: View {
 
 struct FrameworkDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        FrameworkDetailView(framework: MockData.sampleFramework)
+        FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
     }
 }
 
