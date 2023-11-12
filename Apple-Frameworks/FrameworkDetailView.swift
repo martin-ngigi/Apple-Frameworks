@@ -10,6 +10,7 @@ import SwiftUI
 struct FrameworkDetailView: View {
     var framework: Framework
     @Binding var isShowingDetailView: Bool
+    @State private var isShowingSafafriView = false
 
     var body: some View {
         VStack{
@@ -41,9 +42,12 @@ struct FrameworkDetailView: View {
             Spacer()
             
             Button{
-                
+                isShowingSafafriView = true
             } label: {
                 AFButtonView(title: "Learn more")
+            }
+            .sheet(isPresented: $isShowingSafafriView) {
+                SafariView(url: URL(string: framework.urlString) ?? URL(string: "safiribytes.com")!)
             }
             
 
